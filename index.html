@@ -19,9 +19,14 @@
                 <p id="message">ボタンを押してメッセージを表示</p>
             </div>
 
-            <button id="messageBtn" class="btn">
-                メッセージを表示
-            </button>
+            <div class="button-group">
+                <button id="messageBtn" class="btn btn-primary">
+                    メッセージを表示
+                </button>
+                <button id="shareBtn" class="btn btn-share" title="シェア">
+                    📤
+                </button>
+            </div>
 
             <div class="counter-display">
                 <p id="counterText">本日 <span id="counter">0</span> 回押しました</p>
@@ -32,6 +37,9 @@
             <p>&copy; 2026 Random Message App</p>
         </footer>
     </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">コピーしました！</div>
 
     <script src="script.js"></script>
 </body>
