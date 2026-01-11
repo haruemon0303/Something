@@ -37,6 +37,13 @@ h1 {
     color: #667eea;
     font-weight: 700;
     letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.date-display {
+    font-size: 16px;
+    color: #6c757d;
+    font-weight: 500;
 }
 
 /* メインコンテンツ */
@@ -95,6 +102,27 @@ main {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
+/* カウンター表示 */
+.counter-display {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+#counterText {
+    font-size: 16px;
+    color: #495057;
+    margin: 0;
+}
+
+#counter {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 18px;
+}
+
 /* フッター */
 footer {
     padding-top: 20px;
@@ -116,6 +144,10 @@ footer p {
         font-size: 24px;
     }
 
+    .date-display {
+        font-size: 14px;
+    }
+
     #message {
         font-size: 18px;
     }
@@ -127,6 +159,14 @@ footer p {
 
     .btn {
         padding: 16px 25px;
+        font-size: 16px;
+    }
+
+    #counterText {
+        font-size: 14px;
+    }
+
+    #counter {
         font-size: 16px;
     }
 }

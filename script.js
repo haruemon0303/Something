@@ -21,6 +21,47 @@ const messages = [
 const messageElement = document.getElementById('message');
 const messageBtn = document.getElementById('messageBtn');
 const messageBox = document.querySelector('.message-box');
+const dateDisplay = document.getElementById('dateDisplay');
+const counterElement = document.getElementById('counter');
+
+// 今日の日付を取得する関数
+function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}/${month}/${day}`;
+}
+
+// 日付を表示する関数
+function displayDate() {
+    dateDisplay.textContent = getTodayDate();
+}
+
+// カウンターを初期化する関数
+function initializeCounter() {
+    const today = getTodayDate();
+    const savedDate = localStorage.getItem('clickDate');
+
+    // 日付が変わっていたらカウンターをリセット
+    if (savedDate !== today) {
+        localStorage.setItem('clickDate', today);
+        localStorage.setItem('clickCount', '0');
+        counterElement.textContent = '0';
+    } else {
+        // 保存されているカウントを表示
+        const savedCount = localStorage.getItem('clickCount') || '0';
+        counterElement.textContent = savedCount;
+    }
+}
+
+// カウンターを増やす関数
+function incrementCounter() {
+    const currentCount = parseInt(localStorage.getItem('clickCount') || '0', 10);
+    const newCount = currentCount + 1;
+    localStorage.setItem('clickCount', newCount.toString());
+    counterElement.textContent = newCount.toString();
+}
 
 // ランダムメッセージを表示する関数
 function showRandomMessage() {
@@ -38,6 +79,9 @@ function showRandomMessage() {
         messageElement.classList.add('fade-in');
         messageBox.classList.add('active');
     }, 100);
+
+    // カウンターを増やす
+    incrementCounter();
 }
 
 // ボタンクリックイベントリスナー
@@ -47,4 +91,10 @@ messageBtn.addEventListener('click', showRandomMessage);
 messageBtn.addEventListener('touchstart', (e) => {
     e.preventDefault();
     showRandomMessage();
+});
+
+// ページロード時の初期化
+document.addEventListener('DOMContentLoaded', () => {
+    displayDate();
+    initializeCounter();
 });
